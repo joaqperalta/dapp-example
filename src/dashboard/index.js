@@ -29,7 +29,7 @@ export default function Dashboard() {
     // pricesWs.onmessage = function (msg) {
     //   console.log("data", msg.data)
     // }
-    axios.get("http://api.coincap.io/v2/assets?offset=1&limit=10").
+    axios.get("https://api.coincap.io/v2/assets?offset=1&limit=10").
     then(res => {
       console.log("data", res.data)
     })
