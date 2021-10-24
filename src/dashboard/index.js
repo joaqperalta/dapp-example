@@ -54,10 +54,11 @@ export default function Dashboard() {
   const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
 
-  const handlePagination = (e, page) => {
+  const handlePagination = (e, num) => {
+    setPage(num)
     axios
       .get(
-        `https://api.coincap.io/v2/assets?offset=${(page - 1) * 20}&limit=20`
+        `https://api.coincap.io/v2/assets?offset=${(num - 1) * 20}&limit=20`
       )
       .then((res) => {
         setData(res.data.data);
