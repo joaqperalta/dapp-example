@@ -25,33 +25,38 @@ const NoBorderCell = withStyles({
 
 export default function Dashboard() {
   useEffect(() => {
-    axios
-      .get("https://api.coincap.io/v2/assets?offset=0&limit=20")
+    const timer = setInterval(() => {
+      axios
+      .get(`https://api.coincap.io/v2/assets?offset=${(page-1)*20}&limit=20`)
       .then((res) => {
-        console.log("data arrived", res.data.data);
         setData(res.data.data);
       })
       .catch((err) => console.log("err occured:", err));
+    }, 2000)
+    
+    return () => {
+      clearInterval(timer)
+    }
   }, []);
 
-  const pricesWs = new WebSocket("wss://ws.coincap.io/prices?assets=ALL");
-  pricesWs.onmessage = function (msg) {
-    let modify = JSON.parse(msg.data);
-    let currencies = Object.keys(modify);
-    let res = [...data];
-    if (res.length > 0) {
-      currencies.forEach((curr) => {
-        res = res.map((item) =>
-          item.name.toLowerCase() == curr
-            ? { ...item, priceUsd: modify[curr] }
-            : item
-        );
-      });
-      setData(res);
-    }
-  };
+  // const pricesWs = new WebSocket("wss://ws.coincap.io/prices?assets=ALL");
+  // pricesWs.onmessage = function (msg) {
+  //   let modify = JSON.parse(msg.data);
+  //   let currencies = Object.keys(modify);
+  //   let res = [...data];
+  //   if (res.length > 0) {
+  //     currencies.forEach((curr) => {
+  //       res = res.map((item) =>
+  //         item.name.toLowerCase() == curr
+  //           ? { ...item, priceUsd: modify[curr] }
+  //           : item
+  //       );
+  //     });
+  //     setData(res);
+  //   }
+  // };
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
 
   const handlePagination = (e, num) => {
