@@ -23,13 +23,13 @@ const NoBorderCell = withStyles({
   },
 })(TableCell);
 
-const timer
+let timer
 
 export default function Dashboard() {
   useEffect(() => {
     timer = setInterval(() => {
       axios
-      .get(`https://api.coincap.io/v2/assets?offset=${(page-1)*20}&limit=20`)
+      .get(`https://api.coincap.io/v2/assets?offset=${page*20}&limit=20`)
       .then((res) => {
         setData(res.data.data);
       })
@@ -58,11 +58,11 @@ export default function Dashboard() {
   //   }
   // };
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
 
   const handlePagination = (e, num) => {
-    setPage(num)
+    setPage(num-1)
     clearInterval(timer)
     timer = setInterval(() => {
       axios
@@ -126,7 +126,7 @@ export default function Dashboard() {
         </Box>
       )}
       <Grid container justifyContent="flex-end" style={{ marginTop: "10px" }}>
-        <Pagination count={41} color="primary" onChange={handlePagination} />
+        <Pagination count={100} color="primary" onChange={handlePagination} />
       </Grid>
     </Box>
   );
