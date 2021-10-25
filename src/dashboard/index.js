@@ -41,23 +41,6 @@ export default function Dashboard() {
     }
   }, []);
 
-  // const pricesWs = new WebSocket("wss://ws.coincap.io/prices?assets=ALL");
-  // pricesWs.onmessage = function (msg) {
-  //   let modify = JSON.parse(msg.data);
-  //   let currencies = Object.keys(modify);
-  //   let res = [...data];
-  //   if (res.length > 0) {
-  //     currencies.forEach((curr) => {
-  //       res = res.map((item) =>
-  //         item.name.toLowerCase() == curr
-  //           ? { ...item, priceUsd: modify[curr] }
-  //           : item
-  //       );
-  //     });
-  //     setData(res);
-  //   }
-  // };
-
   const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
 
