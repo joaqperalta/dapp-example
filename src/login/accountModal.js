@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import {
   Box,
   Button,
@@ -9,14 +9,14 @@ import {
   IconButton,
   Link,
   Input,
-} from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import CallMadeIcon from '@mui/icons-material/CallMade';
-import Identicon from "./identIcon";
-import { useEthers, useEtherBalance, useSendTransaction } from "@usedapp/core";
-import { formatEther } from "@ethersproject/units";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+} from "@material-ui/core"
+import CloseIcon from "@material-ui/icons/Close"
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import CallMadeIcon from '@mui/icons-material/CallMade'
+import Identicon from "./identIcon"
+import { useEthers, useEtherBalance, useSendTransaction } from "@usedapp/core"
+import { formatEther } from "@ethersproject/units"
+import { CopyToClipboard } from "react-copy-to-clipboard"
 import { utils } from 'ethers'
 
 const style = {
@@ -46,7 +46,7 @@ export default function BasicModal({ open, handleClose }) {
   useEffect(() => {
     if (state.status != 'Mining') {
       setDisabled(false)
-      setEthVal('0')
+      setEthVal('')
       setRecAddr('')
     }
   }, [state])

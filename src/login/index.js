@@ -1,17 +1,17 @@
 import { useState } from "react"
-import { useEthers, useEtherBalance } from "@usedapp/core";
-import { formatEther } from "@ethersproject/units";
-import { Box, Button, Typography } from "@material-ui/core";
-import Identicon from "./identIcon";
+import { useEthers, useEtherBalance } from "@usedapp/core"
+import { formatEther } from "@ethersproject/units"
+import { Box, Button, Typography } from "@material-ui/core"
+import Identicon from "./identIcon"
 import AccountModal from './accountModal'
 
 export default function ConnectButton() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
-  const { activateBrowserWallet, account } = useEthers();
-  const etherBalance = useEtherBalance(account);
+  const { activateBrowserWallet, account } = useEthers()
+  const etherBalance = useEtherBalance(account)
 
   return (
     <Box p={3}>

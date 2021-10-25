@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import {
   Table,
   TableBody,
@@ -10,18 +10,18 @@ import {
   Typography,
   Grid,
   Box,
-} from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+} from "@material-ui/core"
+import { withStyles } from "@material-ui/core/styles"
 import { Pagination } from "@material-ui/lab";
-import axios from "axios";
-import Icon from "react-crypto-icons";
+import axios from "axios"
+import Icon from "react-crypto-icons"
 
 const NoBorderCell = withStyles({
   root: {
     borderBottom: "none",
     textAlign: "center",
   },
-})(TableCell);
+})(TableCell)
 
 let timer
 
@@ -53,7 +53,7 @@ export default function Dashboard() {
         `https://api.coincap.io/v2/assets?offset=${(num - 1) * 20}&limit=20`
       )
       .then((res) => {
-        setData(res.data.data);
+        setData(res.data.data)
       })
       .catch((err) => console.log("err occured:", err));
     }, 2000)  
