@@ -34,7 +34,7 @@ export default function Dashboard() {
         setData(res.data.data);
       })
       .catch((err) => console.log("err occured:", err));
-    }, 2000)
+    }, 4000)
     
     return () => {
       clearInterval(timer)
@@ -56,7 +56,7 @@ export default function Dashboard() {
         setData(res.data.data)
       })
       .catch((err) => console.log("err occured:", err));
-    }, 2000)  
+    }, 4000)  
   };
 
   return (
