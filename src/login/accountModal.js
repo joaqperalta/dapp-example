@@ -51,14 +51,14 @@ export default function BasicModal({ open, handleClose }) {
     }
   }, [state])
   const handleDeactivateAccount = () => {
-    deactivate();
-    handleClose();
+    deactivate()
+    handleClose()
   }
   const changeCopyVal = () => {
-    setCopyButVal("Copied");
+    setCopyButVal("Copied")
     setTimeout(() => {
-      setCopyButVal("Copy Address");
-    }, 2000);
+      setCopyButVal("Copy Address")
+    }, 2000)
   }
   const handleSend = () => {
     setDisabled(true)
@@ -151,5 +151,5 @@ export default function BasicModal({ open, handleClose }) {
         </Box>
       </Box>
     </Modal>
-  );
+  )
 }

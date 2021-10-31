@@ -12,9 +12,10 @@ import {
   Box,
 } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
-import { Pagination } from "@material-ui/lab";
+import { Pagination } from "@material-ui/lab"
 import axios from "axios"
 import Icon from "react-crypto-icons"
+import { API_URL } from '../constant'
 
 const NoBorderCell = withStyles({
   root: {
@@ -24,25 +25,26 @@ const NoBorderCell = withStyles({
 })(TableCell)
 
 let timer
+const count = 20
 
 export default function Dashboard() {
   useEffect(() => {
     timer = setInterval(() => {
       axios
-      .get(`https://api.coincap.io/v2/assets?offset=${page*20}&limit=20`)
+      .get(`${API_URL}?offset=${page*count}&limit=${count}`)
       .then((res) => {
-        setData(res.data.data);
+        setData(res.data.data)
       })
-      .catch((err) => console.log("err occured:", err));
+      .catch((err) => console.log(err.message))
     }, 4000)
     
     return () => {
       clearInterval(timer)
     }
-  }, []);
+  }, [])
 
-  const [page, setPage] = useState(0);
-  const [data, setData] = useState([]);
+  const [page, setPage] = useState(0)
+  const [data, setData] = useState([])
 
   const handlePagination = (e, num) => {
     setPage(num-1)
@@ -50,12 +52,12 @@ export default function Dashboard() {
     timer = setInterval(() => {
       axios
       .get(
-        `https://api.coincap.io/v2/assets?offset=${(num - 1) * 20}&limit=20`
+        `${API_URL}?offset=${(num - 1) * count}&limit=${count}`
       )
       .then((res) => {
         setData(res.data.data)
       })
-      .catch((err) => console.log("err occured:", err));
+      .catch((err) => console.log(err.message))
     }, 4000)  
   };
 
@@ -86,7 +88,7 @@ export default function Dashboard() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <NoBorderCell component="th" scope="row">
-                    {page * 20 + i + 1}
+                    {page * count + i + 1}
                   </NoBorderCell>
                   <NoBorderCell align="right">{row.name}</NoBorderCell>
                   <NoBorderCell align="right">

@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider, createTheme } from "@material-ui/core/styles"
 import { Container, Grid } from "@material-ui/core"
@@ -21,7 +20,7 @@ const App = () => {
   return (
     <ThemeProvider theme={themeDark}>
       <CssBaseline />
-      <Container fixed>
+      <Container maxWidth="lg" >
         <Grid container justifyContent="flex-end" >
           <MetaLogIn />
         </Grid>
@@ -31,4 +30,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App

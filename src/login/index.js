@@ -57,5 +57,5 @@ export default function ConnectButton() {
         </Button>
       )}
     </Box>
-  );
+  )
 }
